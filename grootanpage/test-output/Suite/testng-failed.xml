@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="TestOne">
+    <classes>
+      <class name="com.grootan.steps.TestClassTwo"/>
+    </classes>
+  </test> <!-- TestOne -->
+  <test name="TestTwo">
+    <classes>
+      <class name="com.grootan.steps.TestClassOne"/>
+    </classes>
+  </test> <!-- TestTwo -->
+  <test name="TestOne(failed)">
+    <classes>
+      <class name="com.grootan.steps.TestClassTwo">
+        <methods>
+          <include name="testMethodSkip"/>
+          <include name="testMethodFail"/>
+        </methods>
+      </class> <!-- com.grootan.steps.TestClassTwo -->
+    </classes>
+  </test> <!-- TestOne(failed) -->
+  <test name="TestTwo(failed)">
+    <classes>
+      <class name="com.grootan.steps.TestClassOne">
+        <methods>
+          <include name="testMethodFail"/>
+          <include name="testMethodSkip"/>
+        </methods>
+      </class> <!-- com.grootan.steps.TestClassOne -->
+    </classes>
+  </test> <!-- TestTwo(failed) -->
+</suite> <!-- Failed suite [Suite] -->

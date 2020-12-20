@@ -6,15 +6,4 @@
       <class name="com.grootan.stepdefinition.TestCaseClass"/>
     </classes>
   </test> <!-- Default test -->
-  <test name="Default test(failed)">
-    <classes>
-      <class name="com.grootan.stepdefinition.TestCaseClass">
-        <methods>
-          <include name="launchBrowser"/>
-          <include name="closeBrowser"/>
-          <include name="screenShort"/>
-        </methods>
-      </class> <!-- com.grootan.stepdefinition.TestCaseClass -->
-    </classes>
-  </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

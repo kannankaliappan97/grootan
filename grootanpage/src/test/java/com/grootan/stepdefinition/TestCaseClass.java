@@ -3,66 +3,50 @@ package com.grootan.stepdefinition;
 
 import java.io.IOException;
 
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class TestCaseClass extends BaseClass {
 	
-	HomePageDahboard urlPage;
+	HomePageDashBoardPage urlPage;
 	
-	@Test 
+	@BeforeTest
+	public static void setUp() {
+		launchBrowser();
+	}
+	
+	
+	@Test (priority =1 )
 	public void screenShort() throws Exception {
-		int folderCoutn =1;
-		fileFolderCreation(folderCoutn);
-		homepageClick();
-	    servicesPageClick();
-		openSourcePageClick();
-		blogPageCLick();
-		teamPageClick();
-		careerPageClick();		
-		contactUspageClick();
-		
+		int folderCount =1;
+		fileFolderCreation(folderCount);
+		urlPage = new HomePageDashBoardPage();
+		urlPage.homepageClick();
+		urlPage.servicesPageClick();
+		urlPage.openSourcePageClick();
+		urlPage.blogPageCLick();
+		urlPage.teamPageClick();
+		urlPage.careerPageClick();		
+		urlPage.contactUspageClick();
+	}
+	@Test(priority =2 )
+	public void candidateList() throws Exception {
+		urlPage.juniourEngList();
+	}
+	
+	@Test(priority =3)
+	public void co_CTOAndHrImage() throws Exception {
+		urlPage.coImageCompare();
+		folderImageComparision();
+	}
+	
+
+	@AfterTest
+	public  void tearDown() throws Exception {
+		urlPage.excelWriteTSRSheet();
+		closeBrowser();
 	}
 
-	public void contactUspageClick() throws Exception {
-		urlPage.contactUsTextCLick();
-		captureScreen(driver, "ContactUS");
-		
-	}
-
-	public void careerPageClick()throws Exception {
-		urlPage.careersTextCLick();
-		captureScreen(driver, "Career");
-	}
-
-	public void teamPageClick() throws Exception {
-		urlPage.teamTextCLick();
-		urlPage.juniourEngineerName();
-		captureScreen(driver, "Team");
-	}
-
-	private void blogPageCLick() throws Exception {
-		urlPage.blogTextCLick();
-		captureScreen(driver, "Blog");
-		
-	}
-
-	private void openSourcePageClick() throws Exception {
-		urlPage.openSourceTextCLick();
-		captureScreen(driver, "OpenSource");
-	}
-
-	public void servicesPageClick() throws Exception {
-		urlPage.servicesTextCLick();
-		captureScreen(driver, "Services");
-	}
-
-	public void homepageClick() throws Exception {
-		urlPage.homeTextCLick();
-		captureScreen(driver, "Home");
-		
-		
-		
-		
-	}
 
 }
